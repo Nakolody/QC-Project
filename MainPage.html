@@ -2,10 +2,10 @@
 <head> QC File transfer</head>
 <body>
     <h1>Choose file here:</h1>
-    <input type="file" accept=".txt" id="fileTransfer" onchange="onChange(event)">
+    <input type="file" id="fileTransfer" onchange="onChange(event)">
     <button id='submit'>Submit Data</button>
-    <div>
-        <p id='qcWall'></p>
+    <div id="graphs">
+        <div id="actm"></div>
     </div>
 </body>
 <script src="qcApp.js"></script>

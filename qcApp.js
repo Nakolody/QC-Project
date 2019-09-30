@@ -1,6 +1,7 @@
 
 let data;
 let dataBracket = [];
+
 function onChange(event) {
     let file = event.target.files[0];
     let reader = new FileReader();
@@ -16,9 +17,110 @@ function onChange(event) {
             let newAnalyte = new Reagent(data[0],data[1],data[2],data[3],data[6]);
             dataBracket.push(newAnalyte);
         }
-       // console.log(dataBracket);
+       controlGraph(dataBracket);
     };
     reader.readAsText(file);
-    return dataBracket;
 }
-console.log(dataBracket);
+
+// Adds graph to html page
+function controlGraph (reagentArray){
+// data
+var Data = {
+    type: 'scatter',  
+    x: [reagentArray[0].date,
+        reagentArray[1].date,
+        reagentArray[2].date,
+        reagentArray[3].date,
+        reagentArray[4].date,
+        reagentArray[5].date,
+        reagentArray[6].date], 
+    y: [reagentArray[0].value,
+        reagentArray[1].value,
+        reagentArray[2].value,
+        reagentArray[3].value,
+        reagentArray[4].value,
+        reagentArray[5].value,
+        reagentArray[6].value], 
+    mode: 'lines+markers', 
+    name: 'Data', 
+    showlegend: true,
+    hoverinfo: 'all',
+    line: {
+      color: 'blue', 
+      width: 2
+    }, 
+    marker: {
+      color: 'blue', 
+      size: 8, 
+      symbol: 'circle'
+    }
+  }
+  
+  // violations
+  var Viol = {
+    type: 'scatter', 
+    x: [6,9],  
+    y: [2,8], 
+    mode: 'markers', 
+    name: 'Violation', 
+    showlegend: true, 
+    marker: {
+      color: 'rgb(255,65,54)', 
+      line: {width: 3}, 
+      opacity: 0.5, 
+      size: 12, 
+      symbol: 'circle-open'
+    }
+  }
+  // control limits
+  var CL = {
+    type: 'scatter', 
+    x: [0.5, 10, null, 0.5, 10], 
+    y: [-5, -5, null, 5, 5], 
+    mode: 'lines', 
+    name: 'LCL/UCL', 
+    showlegend: true, 
+    line: {
+      color: 'red', 
+      width: 2,
+      dash: 'dash'
+    }
+  }
+  
+  // centre
+  var Centre = {
+    type: 'scatter',  
+    x: [reagentArray[0].date,
+        reagentArray[1].date,
+        reagentArray[2].date,
+        reagentArray[3].date,
+        reagentArray[4].date,
+        reagentArray[5].date,
+        reagentArray[6].date], 
+    y: [0,0],
+    mode: 'lines', 
+    name: 'Centre', 
+    showlegend: true, 
+    line: {
+      color: 'grey', 
+      width: 2
+    }
+  }
+  
+  // all traces
+  var data = [Data,Viol,CL,Centre]
+  
+  // layout
+  var layout = {
+    title: 'Basic SPC Chart',
+    xaxis: {
+      zeroline: false
+    },
+    yaxis: {
+      range: [-10,10],
+      zeroline: false
+    }
+  }
+  
+  Plotly.plot('actm', data,layout, {showSendToCloud: true});
+}
