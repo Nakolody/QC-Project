@@ -1,15 +1,40 @@
-<!doctype html>
-<head> QC File transfer</head>
-<body>
-    <h1>Choose file here:</h1>
-    <input type="file" id="fileTransfer" onchange="onChange(event)">
-    <button id='submit'>Submit Data</button>
-    <div id="graphs">
+
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QC File transfer</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200">
+    <div class="m-4">
+        <div class="flex justify-between">
+            <div class="">
+                <label class="w-64 flex flex-col items-center px-2 py-4 bg-white text-blue-500 rounded-lg shadow tracking-wide uppercase border border-blue-500 cursor-pointer hover:bg-blue-600 hover:text-white">
+                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                    </svg>
+                    <span class="mt-2 text-base leading-normal">Select a file</span>
+                    <input type="file" id="fileTransfer" onchange="onChange(event)" class="hidden" />
+                </label>
+            </div>
+            <div class="">
+                <h1 class="text-gray-600 text-4xl tracking-wide font-light">Quality and Control</h1>
+            </div>
+            <div class="">
+                <img class="h-40" src="img/undraw_key_points_ig28.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="graphs" class="m-4">
         <div id="actm"></div>
     </div>
 </body>
+<footer></footer>
 <script src="qcApp.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src='reagent.js'></script>
-<footer></footer>
