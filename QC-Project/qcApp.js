@@ -114,7 +114,7 @@ var Data = {
   
   // layout
   var layout = {
-    title: 'Basic SPC Chart',
+    title: `Quality Control Graphs ${object.analyte}`,
     xaxis: {
       zeroline: false
     },
