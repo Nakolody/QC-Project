@@ -28,37 +28,27 @@ function onChange(event) {
               dataBracket[k].value.push(data[6]);
               } 
             if(reagentName !== dataBracket[k].analyte || reagentLevel !== dataBracket[k].level) {
+                createDiv(dataBracket[k]);
+                controlGraph(dataBracket[k]);
                 let newAnalyte = new Reagent(data[0],data[1],data[2],data[5]);
                 newAnalyte.date.push(data[3]);
                 newAnalyte.value.push(data[6]);
                 dataBracket.push(newAnalyte);
                 k +=1;
             }
+            //controlGraph(dataBracket[k]);
         }
-       controlGraph(dataBracket);
     };
     reader.readAsText(file);
 }
 
 // Adds graph to html page
-function controlGraph (reagentArray){
+function controlGraph (object){
 // data
 var Data = {
     type: 'scatter',  
-    x: [reagentArray[0].date,
-        reagentArray[1].date,
-        reagentArray[2].date,
-        reagentArray[3].date,
-        reagentArray[4].date,
-        reagentArray[5].date,
-        reagentArray[6].date], 
-    y: [reagentArray[0].value,
-        reagentArray[1].value,
-        reagentArray[2].value,
-        reagentArray[3].value,
-        reagentArray[4].value,
-        reagentArray[5].value,
-        reagentArray[6].value], 
+    x: object.date, 
+    y: object.value, 
     mode: 'lines+markers', 
     name: 'Data', 
     showlegend: true,
@@ -77,8 +67,8 @@ var Data = {
   // violations
   var Viol = {
     type: 'scatter', 
-    x: [6,9],  
-    y: [2,8], 
+    x: [],  
+    y: [], 
     mode: 'markers', 
     name: 'Violation', 
     showlegend: true, 
@@ -108,13 +98,7 @@ var Data = {
   // centre
   var Centre = {
     type: 'scatter',  
-    x: [reagentArray[0].date,
-        reagentArray[1].date,
-        reagentArray[2].date,
-        reagentArray[3].date,
-        reagentArray[4].date,
-        reagentArray[5].date,
-        reagentArray[6].date], 
+    x: object.date, 
     y: [0,0],
     mode: 'lines', 
     name: 'Centre', 
@@ -140,5 +124,13 @@ var Data = {
     }
   }
   
-  Plotly.plot('actm', data,layout, {showSendToCloud: true});
+  Plotly.plot(object.analyte, data,layout, {showSendToCloud: true});
+}
+//Creates div appends it to the hthml
+
+function createDiv (qcDiv) {
+  let graph = document.getElementById('graphs');
+  let div = document.createElement('div');
+  div.setAttribute('id',qcDiv.analyte);
+  graph.append(div);
 }
