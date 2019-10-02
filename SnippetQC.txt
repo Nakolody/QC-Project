@@ -1,14 +1,0 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-
-\f0\fs24 \cf0 Vista1,40981V1,ACTM,2019/09/16,10:22:33,1,17.7\
-Vista1,40981V1,ACTM,2019/09/17,10:18:57,1,17.7\
-Vista1,40981V1,ACTM,2019/09/18,10:20:31,1,16.6\
-Vista1,40981V1,ACTM,2019/09/19,10:19:04,1,18.0\
-Vista1,40981V1,ACTM,2019/09/20,10:19:12,1,16.9\
-Vista1,40981V1,ACTM,2019/09/21,10:24:57,1,17.8\
-Vista1,40981V1,ACTM,2019/09/22,10:18:43,1,16.7}
